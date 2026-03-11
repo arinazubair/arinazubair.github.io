@@ -15,7 +15,7 @@
         <li><a href="#about">About Me</a></li>
         <li><a href="#resume">Education &amp; Experience</a></li>
         <li><a href="#works">Recent Works</a></li>
-        <li><a href="mailto:arinazubair28@gmail.com">Contact Me</a></li>
+        <li><a href="#honours">Honours &amp; Achievements</a></li>
       </ul>
       <a href="#" class="btn btn-outline nav-btn-main">Back to main</a>
     </nav>
@@ -337,6 +337,48 @@
     </div>
   </section>
 
+  <section class="connect" id="contact">
+    <h2 class="section-title">Connect</h2>
+    <div class="section-divider"></div>
+    <div class="connect-grid">
+      <div class="connect-info">
+        <p class="connect-text">Feel free to reach out for collaborations, research opportunities, or academic discussions.</p>
+        <div class="connect-links">
+          <a href="mailto:arinazubair28@gmail.com" class="connect-link">
+            <i class="fas fa-envelope"></i>
+            arinazubair28@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/arina-430a2124b/" target="_blank" rel="noopener noreferrer" class="connect-link">
+            <i class="fab fa-linkedin"></i>
+            LinkedIn
+          </a>
+          <a href="https://github.com/arinazubair" target="_blank" rel="noopener noreferrer" class="connect-link">
+            <i class="fab fa-github"></i>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <form class="connect-form" action="https://formsubmit.co/arinazubair28@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New portfolio contact message">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://arinazubair.github.io/?sent=1#contact">
+
+        <label class="connect-label" for="name">Name</label>
+        <input class="connect-input" id="name" name="name" type="text" required>
+
+        <label class="connect-label" for="email">Email</label>
+        <input class="connect-input" id="email" name="email" type="email" required>
+
+        <label class="connect-label" for="message">Message</label>
+        <textarea class="connect-input connect-textarea" id="message" name="message" required></textarea>
+
+        <button type="submit" class="btn btn-outline">Send Message</button>
+        <p class="connect-success" id="connect-success" role="status" aria-live="polite">Message sent successfully.</p>
+      </form>
+    </div>
+  </section>
+
   <div class="cv-modal" id="cv-modal" aria-hidden="true">
     <div class="cv-modal-backdrop" id="cv-modal-backdrop"></div>
     <div class="cv-modal-panel" role="dialog" aria-modal="true" aria-label="CV Preview">
@@ -413,6 +455,19 @@
           closeModal();
         }
       });
+    })();
+
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('sent') !== '1') return;
+
+      var success = document.getElementById('connect-success');
+      if (success) success.classList.add('is-visible');
+
+      params.delete('sent');
+      var cleanQuery = params.toString();
+      var cleanUrl = window.location.pathname + (cleanQuery ? '?' + cleanQuery : '') + window.location.hash;
+      window.history.replaceState({}, '', cleanUrl);
     })();
   </script>
 </body>
